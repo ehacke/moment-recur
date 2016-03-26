@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 
-var karma = require('karma').server;
+var Server = require('karma').Server;
 var uglify = require('gulp-uglifyjs');
 var runSequence = require('run-sequence');
 
@@ -8,20 +8,24 @@ var runSequence = require('run-sequence');
  * Run test once and exit
  */
 gulp.task('test', function (done) {
-  return karma.start({
+  var server = new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done);
+
+  return server.start();
 });
 
 /**
  * Run test continually
  */
 gulp.task('test:dev', function (done) {
-  return karma.start({
+  var server = new Server({
     configFile: __dirname + '/karma.conf.js',
-    singleRun: false
+    singleRun: true
   }, done);
+
+  return server.start();
 });
 
 gulp.task('compress', function(done) {
