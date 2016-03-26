@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 
 var Server = require('karma').Server;
-var uglify = require('gulp-uglifyjs');
+var uglify = require('gulp-uglify');
 var runSequence = require('run-sequence');
 
 /**
